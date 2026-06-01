@@ -27,17 +27,17 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Veljko Vukotic — Fullstack Developer',
+    default: 'Veljko Vukotic — Software Developer',
     template: '%s | Veljko Vukotic',
   },
   description:
-    'Fullstack developer based in Belgrade, building web applications across Angular, React, Java, Go, and more.',
-  keywords: ['Fullstack Developer', 'Angular', 'React', 'TypeScript', 'Java', 'Go', 'Portfolio', 'Belgrade'],
+    'Software developer based in Belgrade, building web applications across Angular, React, Java, Go, and more.',
+  keywords: ['Software Developer', 'Angular', 'React', 'TypeScript', 'Java', 'Go', 'Portfolio', 'Belgrade'],
   authors: [{ name: 'Veljko Vukotic' }],
   openGraph: {
     type: 'website',
-    title: 'Veljko Vukotic — Fullstack Developer',
-    description: 'Fullstack developer based in Belgrade, building web applications across the entire stack.',
+    title: 'Veljko Vukotic — Software Developer',
+    description: 'Software developer based in Belgrade, building web applications across the entire stack.',
     siteName: 'Veljko Vukotic Portfolio',
   },
 };

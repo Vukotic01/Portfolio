@@ -34,8 +34,8 @@ export function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
-          ? 'bg-bg/80 backdrop-blur-xl border-b border-border shadow-lg shadow-black/20'
-          : 'bg-transparent'
+          ? 'bg-surface-secondary/90 backdrop-blur-xl border-b border-border shadow-lg shadow-black/20'
+          : 'bg-surface-secondary/60 backdrop-blur-sm border-b border-border/40'
       )}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
