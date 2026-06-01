@@ -10,7 +10,7 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer className="border-t border-border bg-surface-secondary/30">
-      <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="text-center md:text-left">
           <p className="font-display text-lg font-bold text-text-primary">
             Veljko<span className="text-accent">.</span>Vukotic

@@ -20,7 +20,7 @@ const itemVariants = {
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden">
       {/* Animated gradient orbs */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="orb orb-1" />
@@ -30,7 +30,7 @@ export function Hero() {
         <div className="grid-overlay" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24 pb-16 w-full">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-16 w-full">
         <motion.div variants={containerVariants} initial="hidden" animate="visible">
           {/* Available badge */}
           <motion.div variants={itemVariants} className="mb-8">
@@ -46,7 +46,7 @@ export function Hero() {
           {/* Main heading */}
           <motion.h1
             variants={itemVariants}
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-6"
+            className="font-display text-[2.6rem] sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-6"
           >
             <span className="text-text-primary">{personal.firstName}</span>
             <br />
@@ -69,7 +69,7 @@ export function Hero() {
           </motion.p>
 
           {/* CTAs */}
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-16">
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-10 md:mb-16">
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 shadow-[0_0_24px_rgba(14,165,233,0.35)] hover:shadow-[0_0_40px_rgba(14,165,233,0.5)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
@@ -122,9 +122,9 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — desktop only, avoids overlapping hero content on small screens */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-muted"
+        className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-text-muted"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}

@@ -28,8 +28,8 @@ export function ExperienceTimeline() {
               )}
             </div>
 
-            <div className="group bg-surface-secondary border border-border rounded-xl p-6 hover:border-accent/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(14,165,233,0.06)]">
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+            <div className="group bg-surface-secondary border border-border rounded-xl p-5 sm:p-6 hover:border-accent/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(14,165,233,0.06)]">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-3 mb-4">
                 <div>
                   <h3 className="text-lg font-semibold text-text-primary">{job.role}</h3>
                   <p className="text-accent font-medium">{job.company}</p>

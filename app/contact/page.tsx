@@ -35,23 +35,23 @@ const contactInfo = [
 export default function ContactPage() {
   return (
     <PageWrapper>
-      <section className="pt-32 pb-24 px-6">
+      <section className="pt-28 md:pt-32 pb-16 md:pb-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <p className="text-sm font-medium text-accent uppercase tracking-widest mb-4">
             Let's Talk
           </p>
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-text-primary leading-tight mb-4">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold text-text-primary leading-tight mb-4">
             Get In Touch
           </h1>
-          <p className="text-text-muted max-w-xl text-lg leading-relaxed mb-16">
+          <p className="text-text-muted max-w-xl text-base md:text-lg leading-relaxed mb-10 md:mb-16">
             Whether you have a project in mind, a role to discuss, or just want to say hello — I'm
             always happy to connect.
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12">
             {/* Form */}
             <div className="lg:col-span-3">
-              <div className="bg-surface-secondary border border-border rounded-2xl p-8">
+              <div className="bg-surface-secondary border border-border rounded-2xl p-5 sm:p-8">
                 <h2 className="font-display text-xl font-semibold text-text-primary mb-6">
                   Send a Message
                 </h2>

@@ -12,14 +12,14 @@ export default function HomePage() {
       <Hero />
 
       {/* Featured Projects teaser */}
-      <section className="py-24 px-6">
+      <section className="py-16 md:py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-12 gap-4">
+          <div className="flex items-end justify-between mb-10 md:mb-12 gap-4">
             <div>
               <p className="text-sm font-medium text-accent uppercase tracking-widest mb-3">
                 Selected Work
               </p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-text-primary section-heading">
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-text-primary section-heading">
                 Featured Projects
               </h2>
             </div>
@@ -41,14 +41,14 @@ export default function HomePage() {
       </section>
 
       {/* CTA banner */}
-      <section className="py-20 px-6">
+      <section className="py-14 md:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="relative overflow-hidden rounded-2xl border border-accent/20 bg-accent-dim p-12 text-center">
+          <div className="relative overflow-hidden rounded-2xl border border-accent/20 bg-accent-dim p-6 sm:p-10 md:p-12 text-center">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_100%_at_50%_100%,rgba(14,165,233,0.08),transparent)] pointer-events-none" />
             <p className="text-sm font-medium text-accent uppercase tracking-widest mb-4">
               Open to Work
             </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-text-primary mb-4">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-text-primary mb-4">
               Let's build something great together
             </h2>
             <p className="text-text-muted max-w-lg mx-auto mb-8 text-base">

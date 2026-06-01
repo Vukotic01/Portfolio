@@ -39,7 +39,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   return (
     <PageWrapper>
       {/* Hero banner */}
-      <section className="relative pt-32 pb-20 px-6 border-b border-border overflow-hidden">
+      <section className="relative pt-28 md:pt-32 pb-14 md:pb-20 px-4 sm:px-6 border-b border-border overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_-20%,rgba(14,165,233,0.1),transparent)] pointer-events-none" />
         <div className="max-w-4xl mx-auto relative z-10">
           <Link
@@ -58,10 +58,10 @@ export default async function ProjectDetailPage({ params }: Props) {
             ))}
           </div>
 
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-text-primary leading-tight mb-4">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold text-text-primary leading-tight mb-4">
             {project.title}
           </h1>
-          <p className="text-xl text-text-muted leading-relaxed mb-8 max-w-2xl">
+          <p className="text-base sm:text-xl text-text-muted leading-relaxed mb-8 max-w-2xl">
             {project.shortDescription}
           </p>
 
@@ -102,10 +102,10 @@ export default async function ProjectDetailPage({ params }: Props) {
       </section>
 
       {/* Content */}
-      <section className="py-20 px-6">
+      <section className="py-14 md:py-20 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           {/* Tech stack */}
-          <div className="mb-16">
+          <div className="mb-10 md:mb-16">
             <h2 className="font-display text-sm font-semibold text-text-muted uppercase tracking-widest mb-4">
               Tech Stack
             </h2>
@@ -119,7 +119,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
 
           {/* Overview */}
-          <div className="mb-16">
+          <div className="mb-10 md:mb-16">
             <h2 className="font-display text-2xl font-bold text-text-primary mb-4">Overview</h2>
             <p className="text-text-muted leading-loose text-base">{project.description}</p>
           </div>

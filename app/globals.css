@@ -66,27 +66,27 @@ body {
 }
 
 .orb-1 {
-  width: 500px;
-  height: 500px;
+  width: clamp(200px, 50vw, 500px);
+  height: clamp(200px, 50vw, 500px);
   background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, transparent 70%);
-  top: -100px;
-  left: -100px;
+  top: -60px;
+  left: -60px;
   animation-duration: 25s;
 }
 
 .orb-2 {
-  width: 400px;
-  height: 400px;
+  width: clamp(160px, 40vw, 400px);
+  height: clamp(160px, 40vw, 400px);
   background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
   top: 30%;
-  right: -80px;
+  right: -50px;
   animation-duration: 30s;
   animation-direction: reverse;
 }
 
 .orb-3 {
-  width: 300px;
-  height: 300px;
+  width: clamp(120px, 30vw, 300px);
+  height: clamp(120px, 30vw, 300px);
   background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
   bottom: 10%;
   left: 30%;

@@ -28,7 +28,7 @@ export function ProjectCard({ project, index, activeFilter }: ProjectCardProps) 
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       whileHover={{ y: -4 }}
-      className="group relative bg-surface-secondary border border-border rounded-xl p-6 flex flex-col gap-4 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(14,165,233,0.08)]"
+      className="group relative bg-surface-secondary border border-border rounded-xl p-5 sm:p-6 flex flex-col gap-4 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(14,165,233,0.08)]"
     >
       {/* Glow on hover */}
       <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />

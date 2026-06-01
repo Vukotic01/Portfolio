@@ -38,7 +38,7 @@ export function Navbar() {
           : 'bg-transparent'
       )}
     >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
           className="font-display text-xl font-bold text-text-primary hover:text-accent transition-colors duration-200"
@@ -102,7 +102,7 @@ export function Navbar() {
             transition={{ duration: 0.2 }}
             className="md:hidden overflow-hidden bg-bg/95 backdrop-blur-xl border-b border-border"
           >
-            <ul className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
+            <ul className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
