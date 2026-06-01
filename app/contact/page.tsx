@@ -101,8 +101,7 @@ export default function ContactPage() {
                   <span className="text-sm font-medium text-green-400">Available for work</span>
                 </div>
                 <p className="text-sm text-text-muted leading-relaxed">
-                  I'm open to fulltime roles, internships, and freelance projects. I typically
-                  respond within 24 hours.
+                  I'm open to freelance projects — from small features to full web apps. Available immediately and typically respond within 24 hours.
                 </p>
               </div>
             </div>

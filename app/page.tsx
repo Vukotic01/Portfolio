@@ -51,8 +51,11 @@ export default function HomePage() {
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-text-primary mb-4">
               Let's build something great together
             </h2>
-            <p className="text-text-muted max-w-lg mx-auto mb-8 text-base">
-              I'm available for fulltime roles, internships, and freelance projects. Let's talk.
+            <p className="text-text-muted max-w-xl mx-auto mb-4 text-base">
+              I'm open to freelance projects — whether you need a web app built from scratch, a new feature added to an existing product, or ongoing development support. Available immediately.
+            </p>
+            <p className="text-text-muted max-w-xl mx-auto mb-8 text-sm">
+              Based in Belgrade · Remote-friendly · Quick turnaround
             </p>
             <Link
               href="/contact"
