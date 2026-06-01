@@ -12,6 +12,8 @@ export interface Project {
   tech: string[];
   tags: ProjectTag[];
   githubUrl: string;
+  frontendUrl?: string | null;
+  backendUrl?: string | null;
   demoUrl?: string | null;
   featured: boolean;
 }

@@ -10,9 +10,17 @@ import { Badge } from '@/components/ui/Badge';
 interface ProjectCardProps {
   project: Project;
   index: number;
+  activeFilter?: string;
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
+export function ProjectCard({ project, index, activeFilter }: ProjectCardProps) {
+  const githubHref =
+    activeFilter === 'Frontend' && project.frontendUrl
+      ? project.frontendUrl
+      : activeFilter === 'Backend' && project.backendUrl
+      ? project.backendUrl
+      : project.githubUrl;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -42,7 +50,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         <div className="flex items-center gap-2 shrink-0">
           <a
-            href={project.githubUrl}
+            href={githubHref}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}

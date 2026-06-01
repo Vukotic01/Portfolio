@@ -75,6 +75,17 @@ export default async function ProjectDetailPage({ params }: Props) {
               <GithubIcon size={16} />
               View on GitHub
             </a>
+            {project.frontendUrl && (
+              <a
+                href={project.frontendUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-text-muted hover:border-accent/50 hover:text-text-primary transition-all duration-200 text-sm font-medium"
+              >
+                <GithubIcon size={16} />
+                Frontend Project
+              </a>
+            )}
             {project.demoUrl && (
               <a
                 href={project.demoUrl}

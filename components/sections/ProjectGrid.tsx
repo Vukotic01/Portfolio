@@ -55,7 +55,7 @@ export function ProjectGrid() {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.25 }}
             >
-              <ProjectCard project={project} index={i} />
+              <ProjectCard project={project} index={i} activeFilter={active} />
             </motion.div>
           ))}
         </AnimatePresence>

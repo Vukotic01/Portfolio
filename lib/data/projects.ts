@@ -15,8 +15,10 @@ export const projects: Project[] = [
     outcome:
       'A working fullstack food ordering application demonstrating strong separation of concerns between frontend and backend layers, with a complete user flow from browsing to order placement.',
     tech: ['Angular', 'TypeScript', 'C#', '.NET', 'REST API'],
-    tags: ['Fullstack'],
+    tags: ['Fullstack', 'Frontend', 'Backend'],
     githubUrl: 'https://github.com/FoodDeliveryWebApp',
+    frontendUrl: 'https://github.com/FoodDeliveryWebApp/frontend',
+    backendUrl: 'https://github.com/FoodDeliveryWebApp/backend',
     demoUrl: null,
     featured: true,
   },

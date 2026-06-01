@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { PageWrapper } from '@/components/layout/PageWrapper';
 import { SkillBadges } from '@/components/sections/SkillBadges';
 import { ExperienceTimeline } from '@/components/sections/ExperienceTimeline';
-import { Download, User, GraduationCap, MapPin } from 'lucide-react';
+import { GraduationCap, MapPin } from 'lucide-react';
 import { personal } from '@/lib/data/personal';
 
 export const metadata: Metadata = {
@@ -23,52 +23,26 @@ export default function AboutPage() {
             <span className="text-accent">work & matter</span>
           </h1>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
-            {/* Photo placeholder */}
-            <div className="relative">
-              <div className="aspect-[4/5] max-w-sm rounded-2xl border border-border bg-surface-secondary flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(14,165,233,0.15),transparent_60%)]" />
-                <div className="flex flex-col items-center gap-3 text-text-muted">
-                  <User size={64} strokeWidth={1} />
-                  <p className="text-sm">Photo coming soon</p>
-                </div>
-              </div>
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -right-4 bg-surface-tertiary border border-border rounded-xl px-5 py-3 shadow-xl">
-                <p className="font-display font-bold text-2xl text-accent">1+</p>
-                <p className="text-xs text-text-muted">Year of experience</p>
-              </div>
+          <div className="mt-12 max-w-2xl">
+            {/* Bio */}
+            <h2 className="font-display text-2xl font-bold text-text-primary mb-4">
+              Hi, I'm {personal.firstName}
+            </h2>
+            <div className="space-y-4 text-text-muted leading-relaxed">
+              {personal.bio.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
             </div>
 
-            {/* Bio */}
-            <div className="flex flex-col justify-center">
-              <h2 className="font-display text-2xl font-bold text-text-primary mb-4">
-                Hi, I'm {personal.firstName}
-              </h2>
-              <div className="space-y-4 text-text-muted leading-relaxed">
-                {personal.bio.map((paragraph, i) => (
-                  <p key={i}>{paragraph}</p>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-4 mt-8">
-                <a
-                  href={personal.cv}
-                  download
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 shadow-[0_0_20px_rgba(14,165,233,0.3)] transition-all duration-200"
-                >
-                  <Download size={16} />
-                  Download CV
-                </a>
-                <a
-                  href={personal.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-text-muted hover:border-accent/50 hover:text-text-primary transition-all duration-200 text-sm font-medium"
-                >
-                  View GitHub
-                </a>
-              </div>
+            <div className="flex flex-wrap gap-4 mt-8">
+              <a
+                href={personal.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-text-muted hover:border-accent/50 hover:text-text-primary transition-all duration-200 text-sm font-medium"
+              >
+                View GitHub
+              </a>
             </div>
           </div>
         </div>

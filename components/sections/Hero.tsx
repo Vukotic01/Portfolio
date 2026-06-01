@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowDown, Briefcase } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/ui/SocialIcons';
 import { personal } from '@/lib/data/personal';
 
@@ -71,17 +71,11 @@ export function Hero() {
           {/* CTAs */}
           <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-16">
             <Link
-              href="/projects"
+              href="/contact"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 shadow-[0_0_24px_rgba(14,165,233,0.35)] hover:shadow-[0_0_40px_rgba(14,165,233,0.5)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
-              View My Work
-              <ArrowRight size={16} />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg border border-border bg-surface-secondary text-text-primary font-semibold text-sm hover:border-accent/50 hover:bg-surface-tertiary transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-            >
-              Get In Touch
+              <Briefcase size={16} />
+              Hire Me
             </Link>
           </motion.div>
 
@@ -117,7 +111,6 @@ export function Hero() {
               {[
                 { value: '1+', label: 'Year of exp.' },
                 { value: '20+', label: 'Technologies' },
-                { value: '3', label: 'Projects built' },
               ].map(({ value, label }) => (
                 <div key={label}>
                   <p className="text-lg font-bold font-display text-text-primary">{value}</p>
