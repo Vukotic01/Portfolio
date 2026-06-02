@@ -130,7 +130,11 @@ export function Navbar() {
                   </li>
                 );
               })}
-              <li className="pt-2">
+              <li className="pt-2 flex items-center gap-2">
+                <LanguageToggle />
+                <ThemeToggle />
+              </li>
+              <li>
                 <Link
                   href="/contact"
                   className="block text-center px-4 py-3 rounded-lg text-sm font-medium border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200"
