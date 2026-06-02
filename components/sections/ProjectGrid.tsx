@@ -6,12 +6,16 @@ import { projects } from '@/lib/data/projects';
 import { ProjectCard } from './ProjectCard';
 import { ProjectTag } from '@/types';
 import { cn } from '@/lib/utils/cn';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 type FilterOption = 'All' | ProjectTag;
-const filters: FilterOption[] = ['All', 'Fullstack', 'Frontend', 'Backend'];
+const filterTags: ProjectTag[] = ['Fullstack', 'Frontend', 'Backend'];
 
 export function ProjectGrid() {
   const [active, setActive] = useState<FilterOption>('All');
+  const { t } = useLanguage();
+
+  const filters: FilterOption[] = ['All', ...filterTags];
 
   const filtered =
     active === 'All' ? projects : projects.filter((p) => p.tags.includes(active));
@@ -38,7 +42,7 @@ export function ProjectGrid() {
                 transition={{ type: 'spring', duration: 0.4 }}
               />
             )}
-            <span className="relative z-10">{filter}</span>
+            <span className="relative z-10">{filter === 'All' ? t.projects.filterAll : filter}</span>
           </button>
         ))}
       </div>

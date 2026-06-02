@@ -3,6 +3,7 @@ import { Syne, DM_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { LanguageProvider } from '@/lib/i18n/LanguageContext';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -46,12 +47,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-bg text-text-primary">
-        <Navbar />
-        <div className="flex-1">{children}</div>
-        <Footer />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}})()` }} />
+        <LanguageProvider>
+          <Navbar />
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

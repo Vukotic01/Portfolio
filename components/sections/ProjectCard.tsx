@@ -6,6 +6,7 @@ import { ExternalLink, ArrowRight } from 'lucide-react';
 import { GithubIcon } from '@/components/ui/SocialIcons';
 import { Project } from '@/types';
 import { Badge } from '@/components/ui/Badge';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 interface ProjectCardProps {
   project: Project;
@@ -14,6 +15,7 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, index, activeFilter }: ProjectCardProps) {
+  const { t } = useLanguage();
   const githubHref =
     activeFilter === 'Frontend' && project.frontendUrl
       ? project.frontendUrl
@@ -76,7 +78,7 @@ export function ProjectCard({ project, index, activeFilter }: ProjectCardProps) 
 
       {/* Description */}
       <p className="text-sm text-text-muted leading-relaxed line-clamp-3 flex-1">
-        {project.shortDescription}
+        {t.projectData[project.slug]?.shortDescription ?? project.shortDescription}
       </p>
 
       {/* Tech stack */}
@@ -98,7 +100,7 @@ export function ProjectCard({ project, index, activeFilter }: ProjectCardProps) 
         href={`/projects/${project.slug}`}
         className="inline-flex items-center gap-1.5 text-sm text-accent font-medium hover:gap-2.5 transition-all duration-200"
       >
-        View case study
+        {t.projects.viewCaseStudy}
         <ArrowRight size={14} />
       </Link>
     </motion.div>

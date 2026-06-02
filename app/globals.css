@@ -18,6 +18,17 @@
   --font-mono: var(--font-jetbrains);
 }
 
+/* ── Light theme overrides ── */
+:root[data-theme="light"] {
+  --color-bg: #F8FAFC;
+  --color-surface-secondary: #F1F5F9;
+  --color-surface-tertiary: #E2E8F0;
+  --color-text-primary: #0F172A;
+  --color-text-muted: #64748B;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-accent-dim: rgba(14, 165, 233, 0.1);
+}
+
 /* ── Base ── */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -25,7 +36,7 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #0F1117;
+  background-color: var(--color-bg, #0F1117);
 }
 
 body {

@@ -8,12 +8,14 @@ import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { contactSchema, ContactSchema } from '@/lib/validations/contact';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 type FormState = 'idle' | 'loading' | 'success' | 'error';
 
 export function ContactForm() {
   const [formState, setFormState] = useState<FormState>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const { t } = useLanguage();
 
   const {
     register,
@@ -56,15 +58,15 @@ export function ContactForm() {
         <div className="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center">
           <CheckCircle size={32} className="text-green-400" />
         </div>
-        <h3 className="text-xl font-semibold text-text-primary">Message sent!</h3>
+        <h3 className="text-xl font-semibold text-text-primary">{t.form.messageSent}</h3>
         <p className="text-text-muted max-w-sm">
-          Thanks for reaching out. I usually respond within 24 hours.
+          {t.form.thankYou}
         </p>
         <button
           onClick={() => setFormState('idle')}
           className="mt-2 text-sm text-accent hover:underline"
         >
-          Send another message
+          {t.form.sendAnother}
         </button>
       </motion.div>
     );
@@ -75,16 +77,16 @@ export function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <Input
           id="name"
-          label="Name"
-          placeholder="Alex Rivera"
+          label={t.form.name}
+          placeholder={t.form.namePlaceholder}
           error={errors.name?.message}
           {...register('name')}
         />
         <Input
           id="email"
-          label="Email"
+          label={t.form.email}
           type="email"
-          placeholder="alex@example.com"
+          placeholder={t.form.emailPlaceholder}
           error={errors.email?.message}
           {...register('email')}
         />
@@ -92,16 +94,16 @@ export function ContactForm() {
 
       <Input
         id="subject"
-        label="Subject"
-        placeholder="Project inquiry"
+        label={t.form.subject}
+        placeholder={t.form.subjectPlaceholder}
         error={errors.subject?.message}
         {...register('subject')}
       />
 
       <Textarea
         id="message"
-        label="Message"
-        placeholder="Tell me about your project, timeline, and budget..."
+        label={t.form.message}
+        placeholder={t.form.messagePlaceholder}
         rows={6}
         error={errors.message?.message}
         {...register('message')}
@@ -129,11 +131,11 @@ export function ContactForm() {
         {formState === 'loading' ? (
           <>
             <Loader2 size={16} className="animate-spin" />
-            Sending...
+            {t.form.sending}
           </>
         ) : (
           <>
-            Send Message
+            {t.form.send}
             <Send size={16} />
           </>
         )}

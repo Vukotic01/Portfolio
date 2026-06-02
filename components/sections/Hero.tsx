@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowDown, Briefcase } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/ui/SocialIcons';
 import { personal } from '@/lib/data/personal';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 const containerVariants = {
   hidden: {},
@@ -19,6 +20,7 @@ const itemVariants = {
 };
 
 export function Hero() {
+  const { t } = useLanguage();
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden">
       {/* Animated gradient orbs */}
@@ -39,7 +41,7 @@ export function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
               </span>
-              Available for work · Open to freelance & full-time roles
+              {t.hero.badge}
             </span>
           </motion.div>
 
@@ -56,8 +58,9 @@ export function Hero() {
           {/* Role */}
           <motion.div variants={itemVariants} className="mb-6">
             <p className="text-xl md:text-2xl text-text-muted font-medium tracking-wide">
-              {personal.title}
+              {t.hero.title}
             </p>
+
           </motion.div>
 
           {/* Tagline */}
@@ -65,7 +68,7 @@ export function Hero() {
             variants={itemVariants}
             className="text-base md:text-lg text-text-muted max-w-xl leading-relaxed mb-10"
           >
-            {personal.tagline}
+            {t.hero.tagline}
           </motion.p>
 
           {/* CTAs */}
@@ -75,7 +78,7 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 shadow-[0_0_24px_rgba(14,165,233,0.35)] hover:shadow-[0_0_40px_rgba(14,165,233,0.5)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
               <Briefcase size={16} />
-              Hire Me
+              {t.hero.hireMe}
             </Link>
           </motion.div>
 
@@ -109,8 +112,8 @@ export function Hero() {
 
             <div className="flex gap-8">
               {[
-                { value: '1+', label: 'Year of exp.' },
-                { value: '20+', label: 'Technologies' },
+                { value: '1+', label: t.hero.yearsExp },
+                { value: '20+', label: t.hero.technologies },
               ].map(({ value, label }) => (
                 <div key={label}>
                   <p className="text-lg font-bold font-display text-text-primary">{value}</p>
@@ -129,7 +132,7 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
       >
-        <span className="text-xs tracking-widest uppercase">Scroll</span>
+        <span className="text-xs tracking-widest uppercase">{t.hero.scroll}</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}

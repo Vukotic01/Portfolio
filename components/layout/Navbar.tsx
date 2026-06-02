@@ -6,18 +6,23 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { LanguageToggle } from '@/components/ui/LanguageToggle';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/contact', label: 'Contact' },
-];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { href: '/', label: t.nav.home },
+    { href: '/about', label: t.nav.about },
+    { href: '/projects', label: t.nav.projects },
+    { href: '/contact', label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -75,12 +80,16 @@ export function Navbar() {
           })}
         </ul>
 
-        <Link
-          href="/contact"
-          className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200"
-        >
-          Hire Me
-        </Link>
+        <div className="hidden md:flex items-center gap-2">
+          <LanguageToggle />
+          <ThemeToggle />
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200"
+          >
+            {t.nav.hireMe}
+          </Link>
+        </div>
 
         {/* Mobile hamburger */}
         <button
@@ -126,7 +135,7 @@ export function Navbar() {
                   href="/contact"
                   className="block text-center px-4 py-3 rounded-lg text-sm font-medium border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200"
                 >
-                  Hire Me
+                  {t.nav.hireMe}
                 </Link>
               </li>
             </ul>
