@@ -27,7 +27,7 @@ export function ContactContent() {
     {
       icon: MapPin,
       label: 'Location',
-      value: `${personal.location} (${t.contact.locationRemote})`,
+      value: personal.location,
       href: null,
     },
   ];

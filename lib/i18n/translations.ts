@@ -108,7 +108,6 @@ export const translations = {
       subtitle: "Whether you have a project in mind, a role to discuss, or just want to say hello — I'm always happy to connect.",
       sendMessage: 'Send a Message',
       findOnline: 'Find Me Online',
-      locationRemote: 'Remote OK',
       availableStatus: 'Available for work',
       availableText: "I'm open to freelance projects — from small features to full web apps. Available immediately and typically respond within 24 hours.",
     },
@@ -177,7 +176,7 @@ export const translations = {
       expertiseLabel: 'Stručnost',
       skillsTitle: 'Veštine i Tehnologije',
       expLabel: 'Iskustvo',
-      bgTitle: 'Pozadina',
+      bgTitle: 'Radna pozadina',
     },
     experience: [
       {
@@ -238,7 +237,6 @@ export const translations = {
       subtitle: 'Da li imate projekat na umu, poziciju za razgovor, ili samo želite da se pozdravite — uvek sam srećan da se povežem.',
       sendMessage: 'Pošaljite Poruku',
       findOnline: 'Pronađite Me Online',
-      locationRemote: 'Rad na daljinu OK',
       availableStatus: 'Dostupan za posao',
       availableText: 'Otvoren sam za freelance projekte — od malih funkcionalnosti do kompletnih web aplikacija. Dostupan odmah i obično odgovaram u roku od 24 sata.',
     },
