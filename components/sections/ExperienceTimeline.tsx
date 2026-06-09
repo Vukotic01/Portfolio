@@ -1,6 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
+
+const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
 import { experience } from '@/lib/data/experience';
 import { MapPin, Calendar } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
@@ -9,8 +11,15 @@ export function ExperienceTimeline() {
   const { t } = useLanguage();
   return (
     <div className="relative">
-      {/* Vertical line */}
-      <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-accent/40 via-border to-transparent hidden md:block" />
+      {/* Vertical line — draws downward on scroll */}
+      <motion.div
+        className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-accent/40 via-border to-transparent hidden md:block"
+        initial={{ scaleY: 0 }}
+        whileInView={{ scaleY: 1 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 1.4, ease: EASE }}
+        style={{ transformOrigin: 'top' }}
+      />
 
       <div className="flex flex-col gap-12">
         {experience.map((job, i) => {

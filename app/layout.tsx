@@ -4,6 +4,9 @@ import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { LanguageProvider } from '@/lib/i18n/LanguageContext';
+import { ScrollProgress } from '@/components/ui/ScrollProgress';
+import { CursorSpotlight } from '@/components/ui/CursorSpotlight';
+import { ParticleCanvas } from '@/components/ui/ParticleCanvas';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -52,6 +55,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="min-h-screen flex flex-col bg-bg text-text-primary">
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}})()` }} />
+        <ScrollProgress />
+        <CursorSpotlight />
+        <ParticleCanvas />
+        <div className="aurora-bg" aria-hidden />
         <LanguageProvider>
           <Navbar />
           <div className="flex-1">{children}</div>

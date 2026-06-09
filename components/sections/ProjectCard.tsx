@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import Link from 'next/link';
 import { ExternalLink, ArrowRight } from 'lucide-react';
 import { GithubIcon } from '@/components/ui/SocialIcons';
@@ -14,8 +15,32 @@ interface ProjectCardProps {
   activeFilter?: string;
 }
 
+const springConfig = { stiffness: 300, damping: 30 };
+
 export function ProjectCard({ project, index, activeFilter }: ProjectCardProps) {
   const { t } = useLanguage();
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const mouseX = useMotionValue(0.5);
+  const mouseY = useMotionValue(0.5);
+
+  const rawRotateX = useTransform(mouseY, [0, 1], [5, -5]);
+  const rawRotateY = useTransform(mouseX, [0, 1], [-6, 6]);
+  const rotateX = useSpring(rawRotateX, springConfig);
+  const rotateY = useSpring(rawRotateY, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    mouseX.set((e.clientX - rect.left) / rect.width);
+    mouseY.set((e.clientY - rect.top) / rect.height);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0.5);
+    mouseY.set(0.5);
+  };
+
   const githubHref =
     activeFilter === 'Frontend' && project.frontendUrl
       ? project.frontendUrl
@@ -25,12 +50,16 @@ export function ProjectCard({ project, index, activeFilter }: ProjectCardProps) 
 
   return (
     <motion.div
+      ref={cardRef}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       whileHover={{ y: -4 }}
-      className="group relative bg-surface-secondary border border-border rounded-xl p-5 sm:p-6 flex flex-col gap-4 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(14,165,233,0.08)]"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformPerspective: 900 }}
+      className="group relative bg-surface-secondary border border-border rounded-xl p-5 sm:p-6 flex flex-col gap-4 transition-colors duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(14,165,233,0.08)]"
     >
       {/* Glow on hover */}
       <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />

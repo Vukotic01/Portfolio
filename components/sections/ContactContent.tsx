@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { PageWrapper } from '@/components/layout/PageWrapper';
 import { ContactForm } from '@/components/sections/ContactForm';
 import { MapPin } from 'lucide-react';
@@ -62,9 +63,16 @@ export function ContactContent() {
                   {t.contact.findOnline}
                 </h2>
                 <ul className="space-y-4">
-                  {contactInfo.map(({ icon: Icon, label, value, href }) => (
-                    <li key={label} className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg border border-border bg-surface-secondary flex items-center justify-center shrink-0 text-accent">
+                  {contactInfo.map(({ icon: Icon, label, value, href }, i) => (
+                    <motion.li
+                      key={label}
+                      initial={{ opacity: 0, x: -16 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: '-40px' }}
+                      transition={{ duration: 0.45, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] }}
+                      className="flex items-start gap-4"
+                    >
+                      <div className="w-10 h-10 rounded-lg border border-border bg-surface-secondary flex items-center justify-center shrink-0 text-accent hover:border-accent/40 hover:shadow-[0_0_16px_rgba(14,165,233,0.2)] transition-all duration-300">
                         <Icon size={18} />
                       </div>
                       <div>
@@ -82,22 +90,24 @@ export function ContactContent() {
                           <p className="text-sm text-text-primary">{value}</p>
                         )}
                       </div>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </div>
 
-              <div className="bg-accent/5 border border-accent/20 rounded-xl p-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
-                  </span>
-                  <span className="text-sm font-medium text-green-400">{t.contact.availableStatus}</span>
+              <div className="spin-border-wrap">
+                <div className="spin-border-inner p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+                    </span>
+                    <span className="text-sm font-medium text-green-400">{t.contact.availableStatus}</span>
+                  </div>
+                  <p className="text-sm text-text-muted leading-relaxed">
+                    {t.contact.availableText}
+                  </p>
                 </div>
-                <p className="text-sm text-text-muted leading-relaxed">
-                  {t.contact.availableText}
-                </p>
               </div>
             </div>
           </div>
