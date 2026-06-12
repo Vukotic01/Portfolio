@@ -24,17 +24,6 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-16 w-full">
-        {/* Available badge */}
-        <div className="mb-8">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent text-sm font-medium">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-            </span>
-            {t.hero.badge}
-          </span>
-        </div>
-
         {/* Main heading */}
         <h1 className="font-display text-[2.6rem] sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-6">
           <span className="text-text-primary">{personal.firstName}</span>
@@ -65,42 +54,26 @@ export function Hero() {
           </Link>
         </div>
 
-        {/* Social links + stats */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-          <div className="flex items-center gap-3">
-            <a
-              href={personal.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-lg border border-border text-text-muted hover:text-accent hover:border-accent/40 transition-all duration-200"
-              aria-label="GitHub"
-            >
-              <GithubIcon size={18} />
-            </a>
-            <a
-              href={personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-lg border border-border text-text-muted hover:text-accent hover:border-accent/40 transition-all duration-200"
-              aria-label="LinkedIn"
-            >
-              <LinkedinIcon size={18} />
-            </a>
-          </div>
-
-          <div className="w-px h-6 bg-border hidden sm:block" />
-
-          <div className="flex gap-8">
-            {[
-              { value: '1+', label: t.hero.yearsExp },
-              { value: '20+', label: t.hero.technologies },
-            ].map(({ value, label }) => (
-              <div key={label}>
-                <p className="text-lg font-bold font-display text-text-primary">{value}</p>
-                <p className="text-xs text-text-muted">{label}</p>
-              </div>
-            ))}
-          </div>
+        {/* Social links */}
+        <div className="flex items-center gap-3">
+          <a
+            href={personal.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-lg border border-border text-text-muted hover:text-accent hover:border-accent/40 transition-all duration-200"
+            aria-label="GitHub"
+          >
+            <GithubIcon size={18} />
+          </a>
+          <a
+            href={personal.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-lg border border-border text-text-muted hover:text-accent hover:border-accent/40 transition-all duration-200"
+            aria-label="LinkedIn"
+          >
+            <LinkedinIcon size={18} />
+          </a>
         </div>
       </div>
 

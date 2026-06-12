@@ -59,7 +59,7 @@ export function ProjectCard({ project, index, activeFilter }: ProjectCardProps) 
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformPerspective: 900 }}
-      className="group relative bg-surface-secondary border border-border rounded-xl p-5 sm:p-6 flex flex-col gap-4 transition-colors duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(14,165,233,0.08)]"
+      className="group relative bg-surface-secondary border border-border rounded-xl p-5 sm:p-6 flex flex-col gap-4 transition-colors duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(14,165,233,0.08)] h-full"
     >
       {/* Glow on hover */}
       <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -74,7 +74,7 @@ export function ProjectCard({ project, index, activeFilter }: ProjectCardProps) 
               </Badge>
             ))}
           </div>
-          <h3 className="text-lg font-semibold text-text-primary group-hover:text-accent transition-colors duration-200">
+          <h3 className="text-lg font-semibold text-text-primary group-hover:text-accent transition-colors duration-200 line-clamp-2">
             {project.title}
           </h3>
         </div>

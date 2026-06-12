@@ -48,7 +48,7 @@ export function Navbar() {
           href="/"
           className="font-display text-xl font-bold text-text-primary hover:text-accent transition-colors duration-200"
         >
-          Veljko<span className="text-accent">.</span>Vukotic
+          {'<'}<span className="text-accent">VV</span>{'/>'}
         </Link>
 
         {/* Desktop nav */}
@@ -83,12 +83,6 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-2">
           <LanguageToggle />
           <ThemeToggle />
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200"
-          >
-            {t.nav.hireMe}
-          </Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -133,14 +127,6 @@ export function Navbar() {
               <li className="pt-2 flex items-center gap-2">
                 <LanguageToggle />
                 <ThemeToggle />
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="block text-center px-4 py-3 rounded-lg text-sm font-medium border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200"
-                >
-                  {t.nav.hireMe}
-                </Link>
               </li>
             </ul>
           </motion.div>
