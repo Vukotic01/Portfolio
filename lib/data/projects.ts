@@ -21,6 +21,12 @@ export const projects: Project[] = [
     backendUrl: 'https://github.com/FoodDeliveryWebApp/backend',
     demoUrl: null,
     featured: true,
+    gallery: [
+      '/projects/food-delivery-app/signup.png',
+      '/projects/food-delivery-app/restaurants.png',
+      '/projects/food-delivery-app/many.png',
+      '/projects/food-delivery-app/admin-dash.png',
+    ],
   },
   {
     slug: 'dog-breed-classifier',

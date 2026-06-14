@@ -79,12 +79,11 @@ export function ProjectCard({ project, index, activeFilter }: ProjectCardProps) 
           </h3>
         </div>
 
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="relative z-10 flex items-center gap-2 shrink-0">
           <a
             href={githubHref}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
             className="p-2 rounded-lg border border-border text-text-muted hover:text-accent hover:border-accent/40 transition-all duration-200"
             aria-label="GitHub"
           >
@@ -95,7 +94,6 @@ export function ProjectCard({ project, index, activeFilter }: ProjectCardProps) 
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
               className="p-2 rounded-lg border border-border text-text-muted hover:text-accent hover:border-accent/40 transition-all duration-200"
               aria-label="Live Demo"
             >
@@ -124,10 +122,10 @@ export function ProjectCard({ project, index, activeFilter }: ProjectCardProps) 
         )}
       </div>
 
-      {/* View details link */}
+      {/* View details link — after:absolute stretches it to cover the whole card */}
       <Link
         href={`/projects/${project.slug}`}
-        className="inline-flex items-center gap-1.5 text-sm text-accent font-medium hover:gap-2.5 transition-all duration-200"
+        className="inline-flex items-center gap-1.5 text-sm text-accent font-medium hover:gap-2.5 transition-all duration-200 after:absolute after:inset-0 after:z-0"
       >
         {t.projects.viewCaseStudy}
         <ArrowRight size={14} />
