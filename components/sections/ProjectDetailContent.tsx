@@ -1,12 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { GithubIcon } from '@/components/ui/SocialIcons';
 import { Project } from '@/types';
 import { Badge } from '@/components/ui/Badge';
 import { PageWrapper } from '@/components/layout/PageWrapper';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
+import Image from 'next/image';
+import { useState, useCallback, useEffect } from 'react';
 
 export function ProjectDetailContent({ project }: { project: Project }) {
   const { t } = useLanguage();
@@ -24,6 +26,26 @@ export function ProjectDetailContent({ project }: { project: Project }) {
     { label: t.projectDetail.solution, content: solution },
     { label: t.projectDetail.outcome, content: outcome },
   ];
+
+  const gallery = project.gallery ?? [];
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const prev = useCallback(() =>
+    setLightboxIndex((i) => (i !== null ? (i - 1 + gallery.length) % gallery.length : null)), [gallery.length]);
+  const next = useCallback(() =>
+    setLightboxIndex((i) => (i !== null ? (i + 1) % gallery.length : null)), [gallery.length]);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [lightboxIndex, closeLightbox, prev, next]);
 
   return (
     <PageWrapper>
@@ -107,6 +129,32 @@ export function ProjectDetailContent({ project }: { project: Project }) {
             <p className="text-text-muted leading-loose text-base">{description}</p>
           </div>
 
+          {gallery.length > 0 && (
+            <div className="mb-10 md:mb-16">
+              <h2 className="font-display text-sm font-semibold text-text-muted uppercase tracking-widest mb-6">
+                Gallery
+              </h2>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                {gallery.map((src, idx) => (
+                  <button
+                    key={src}
+                    onClick={() => setLightboxIndex(idx)}
+                    className="group relative aspect-video w-full overflow-hidden rounded-xl border border-border hover:border-accent/50 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  >
+                    <Image
+                      src={src}
+                      alt={`${title} screenshot ${idx + 1}`}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 50vw, 400px"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="grid grid-cols-1 gap-8">
             {sections.map(({ label, content }, i) => (
               <div
@@ -123,6 +171,67 @@ export function ProjectDetailContent({ project }: { project: Project }) {
           </div>
         </div>
       </section>
+
+      {lightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          onClick={closeLightbox}
+        >
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-200"
+            aria-label="Close"
+          >
+            <X size={24} />
+          </button>
+
+          {gallery.length > 1 && (
+            <>
+              <button
+                onClick={(e) => { e.stopPropagation(); prev(); }}
+                className="absolute left-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-200"
+                aria-label="Previous"
+              >
+                <ChevronLeft size={28} />
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); next(); }}
+                className="absolute right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-200"
+                aria-label="Next"
+              >
+                <ChevronRight size={28} />
+              </button>
+            </>
+          )}
+
+          <div
+            className="relative max-w-5xl w-full mx-16 aspect-video"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={gallery[lightboxIndex]}
+              alt={`${title} screenshot ${lightboxIndex + 1}`}
+              fill
+              className="object-contain"
+              sizes="100vw"
+              priority
+            />
+          </div>
+
+          {gallery.length > 1 && (
+            <div className="absolute bottom-4 flex gap-2">
+              {gallery.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={(e) => { e.stopPropagation(); setLightboxIndex(idx); }}
+                  className={`w-2 h-2 rounded-full transition-all duration-200 ${idx === lightboxIndex ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/70'}`}
+                  aria-label={`Go to image ${idx + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </PageWrapper>
   );
 }

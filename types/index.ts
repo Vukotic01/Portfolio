@@ -16,6 +16,7 @@ export interface Project {
   backendUrl?: string | null;
   demoUrl?: string | null;
   featured: boolean;
+  gallery?: string[];
 }
 
 export interface Skill {
